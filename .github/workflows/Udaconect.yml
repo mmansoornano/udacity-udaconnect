@@ -56,7 +56,7 @@ jobs:
           file: ./modules/location_api/Dockerfile
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: location_api${{ steps.meta.outputs.labels }}
           push: true
       -
         name: Build and push connection api
@@ -67,7 +67,7 @@ jobs:
           file: ./modules/connection_api/Dockerfile
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: connection_api${{ steps.meta.outputs.labels }}
           push: true
       -
         name: Build and push person api
@@ -78,5 +78,5 @@ jobs:
           file: ./modules/person_api/Dockerfile
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: person_api${{ steps.meta.outputs.labels }}
           push: true
