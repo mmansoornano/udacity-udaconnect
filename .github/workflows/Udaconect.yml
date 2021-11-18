@@ -48,12 +48,34 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build and push location api
         uses: docker/build-push-action@v2
         with:
           context: .
           
-          file: ./project/techtrends/Dockerfile
+          file: ./modules/location_api/Dockerfile
+          platforms: linux/amd64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+      -
+        name: Build and push connection api
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          
+          file: ./modules/connection_api/Dockerfile
+          platforms: linux/amd64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+      -
+        name: Build and push person api
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          
+          file: ./modules/person_api/Dockerfile
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
